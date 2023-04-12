@@ -19,10 +19,6 @@ export function* onGetUsers() {
   const response: AxiosResponse<User[]> = yield call(getUsers);
   yield put(usersActions.fetchAllSucceeded(response.data));
 }
-export function* onGetUser(action: PayloadAction<User>) {
-  yield getUser(action.payload);
-  yield put(usersActions.setUser(action.payload));
-}
 export function* onCreateUser(action: PayloadAction<User>) {
   yield createUser(action.payload);
   yield put(usersActions.fetchAll());
@@ -39,7 +35,6 @@ export function* onDeleteUser(action: PayloadAction<User>) {
 // watcher saga: dispatchされたactionを監視して全てのactionにworkerをforkする。
 export function* watchUsersAsync() {
   yield takeEvery(usersActions.fetchAll.type, onGetUsers);
-  // yield takeEvery(usersActions.setUser.type, onGetUser);
   yield takeEvery(usersActions.create.type, onCreateUser);
   yield takeEvery(usersActions.update.type, onUpdateUser);
   yield takeEvery(usersActions.delete.type, onDeleteUser);
