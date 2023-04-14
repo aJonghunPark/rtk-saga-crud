@@ -3,14 +3,20 @@
     {
       "id": "2jYDZyAUBB0edLWMte9oj",
       "name": "test1",
-      "email": "test@test.com",
+      "email": "test1@test.com",
       "password": "test1"
     },
     {
       "id": "FLbFU7aebvS_MRLzVsNtt",
       "name": "test2",
-      "email": "test3@test.com",
+      "email": "test2@test.com",
       "password": "test2"
+    },
+    {
+      "id": "Yy_v_n7msw3VQmjfIOvev",
+      "name": "test3",
+      "email": "test3@test.com",
+      "password": "test3"
     }
   ]
 }
