@@ -3,12 +3,12 @@ import { configureStore } from "@reduxjs/toolkit";
 import logger from "redux-logger";
 
 import { rootSaga } from "./rootSaga";
-import usersReducer from "./user/usersSlice";
+import userReducer from "./user/userSlice";
 
 const sagaMiddleware = createSagaMiddleware();
 export const store = configureStore({
   reducer: {
-    users: usersReducer,
+    user: userReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ thunk: false }).concat([sagaMiddleware, logger]),

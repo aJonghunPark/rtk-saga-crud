@@ -1,7 +1,7 @@
 import { all, fork } from "redux-saga/effects";
 
-import { watchUsersAsync } from "./user/usersSaga";
+import { watchUserAsync } from "./user/userSaga";
 
 export function* rootSaga() {
-  yield all([fork(watchUsersAsync)]);
+  yield all([fork(watchUserAsync)]);
 }

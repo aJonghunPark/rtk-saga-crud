@@ -3,30 +3,30 @@ import Input from "@mui/material/Input";
 import React from "react";
 
 import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { selectUser, usersActions } from "../app/user/usersSlice";
+import { selectUser, userActions } from "../app/user/userSlice";
 
 const MyForm = () => {
   const user = useAppSelector(selectUser);
   const dispatch = useAppDispatch();
   const handleChange =
     (prop: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
-      dispatch(usersActions.setUser({ ...user, [prop]: event.target.value }));
+      dispatch(userActions.setUser({ ...user, [prop]: event.target.value }));
     };
   const handleSubmit = () => {
     if (user.id === "") {
       dispatch(
-        usersActions.create({
+        userActions.create({
           name: user.name,
           email: user.email,
           password: user.password,
         })
       );
     } else {
-      dispatch(usersActions.update({ ...user }));
+      dispatch(userActions.update({ ...user }));
     }
 
     dispatch(
-      usersActions.setUser({
+      userActions.setUser({
         id: "",
         name: "",
         email: "",

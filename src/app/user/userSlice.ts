@@ -8,12 +8,12 @@ import {
 import { RootState } from "../store";
 import { User } from "./types";
 
-export interface UsersState {
+export interface UserState {
   user: User;
   users: User[];
 }
 
-const initialState: UsersState = {
+const initialState: UserState = {
   user: {
     id: "",
     name: "",
@@ -23,8 +23,8 @@ const initialState: UsersState = {
   users: [],
 };
 
-const usersSlice = createSlice({
-  name: "users",
+const userSlice = createSlice({
+  name: "user",
   initialState,
   reducers: {
     fetchAllSucceeded: (state, action: PayloadAction<User[]>) => {
@@ -36,8 +36,8 @@ const usersSlice = createSlice({
   },
 });
 
-export const usersActions = {
-  create: createAction(`${usersSlice.name}/create`, (user: User) => ({
+export const userActions = {
+  create: createAction(`${userSlice.name}/create`, (user: User) => ({
     payload: {
       id: nanoid(),
       name: user.name,
@@ -45,13 +45,13 @@ export const usersActions = {
       password: user.password,
     },
   })),
-  fetchAll: createAction(`${usersSlice.name}/fetchAll`),
-  fetchAllSucceeded: usersSlice.actions.fetchAllSucceeded,
-  setUser: usersSlice.actions.setUser,
-  update: createAction<User>(`${usersSlice.name}/update`),
-  delete: createAction<User>(`${usersSlice.name}/delete`),
+  fetchAll: createAction(`${userSlice.name}/fetchAll`),
+  fetchAllSucceeded: userSlice.actions.fetchAllSucceeded,
+  setUser: userSlice.actions.setUser,
+  update: createAction<User>(`${userSlice.name}/update`),
+  delete: createAction<User>(`${userSlice.name}/delete`),
 };
 
-export const selectUsers = (state: RootState) => state.users.users;
-export const selectUser = (state: RootState) => state.users.user;
-export default usersSlice.reducer;
+export const selectUsers = (state: RootState) => state.user.users;
+export const selectUser = (state: RootState) => state.user.user;
+export default userSlice.reducer;

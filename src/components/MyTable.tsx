@@ -9,13 +9,13 @@ import TableRow from "@mui/material/TableRow";
 import React, { useEffect } from "react";
 
 import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { selectUsers, usersActions } from "../app/user/usersSlice";
+import { selectUsers, userActions } from "../app/user/userSlice";
 
 export default function MyTable() {
   const rows = useAppSelector(selectUsers);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(usersActions.fetchAll());
+    dispatch(userActions.fetchAll());
   }, [dispatch]);
   return (
     <TableContainer component={Paper}>
@@ -42,7 +42,7 @@ export default function MyTable() {
               <TableCell align="right">{row.password}</TableCell>
               <TableCell align="right">
                 <Button
-                  onClick={() => dispatch(usersActions.setUser(row))}
+                  onClick={() => dispatch(userActions.setUser(row))}
                   fullWidth
                   variant="contained"
                 >
@@ -51,7 +51,7 @@ export default function MyTable() {
               </TableCell>
               <TableCell align="right">
                 <Button
-                  onClick={() => dispatch(usersActions.delete(row))}
+                  onClick={() => dispatch(userActions.delete(row))}
                   fullWidth
                   variant="contained"
                 >

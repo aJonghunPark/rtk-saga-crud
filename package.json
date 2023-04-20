@@ -1,5 +1,5 @@
 {
-  "name": "redux-saga-crud",
+  "name": "rtk-saga-crud",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
